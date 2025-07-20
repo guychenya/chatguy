@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../GreataAIBot/dist"
+		},
+		{
+			"path": "../GreataAIBot/node_modules"
+		},
+		{
+			"path": "../GreataAIBot/public"
+		},
+		{
+			"path": "../GreataAIBot/src"
+		}
+	],
+	"settings": {}
+}
