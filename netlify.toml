@@ -1,7 +1,7 @@
 [build]
-  # Since we don't have actual code yet, we'll just publish the documentation
-  publish = "."
-  command = "echo 'No build required for documentation-only site'"
+  # Build the React application
+  publish = "dist"
+  command = "npm run build"
 
 # Configure redirects for SPA if needed in the future
 [[redirects]]
