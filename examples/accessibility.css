@@ -1,0 +1,401 @@
+/**
+ * Accessibility-focused CSS for ChatGuy
+ * 
+ * This CSS file provides styles that enhance the accessibility of the application,
+ * including focus indicators, color contrast, text sizing, and more.
+ */
+
+/* Global accessibility styles */
+:root {
+  /* Color variables with sufficient contrast ratios */
+  --color-text-dark: #222222;
+  --color-text-light: #f8f9fa;
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-primary: #0056b3;
+  --color-primary-light: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  
+  /* Focus indicator styles */
+  --focus-ring-color: #007bff;
+  --focus-ring-width: 3px;
+  
+  /* Typography */
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles */
+*:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* Skip navigation link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Base typography for better readability */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-dark);
+  background-color: var(--color-background-light);
+}
+
+/* Dark mode styles with appropriate contrast */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--color-text-light);
+    background-color: var(--color-background-dark);
+  }
+}
+
+/* Ensure buttons have sufficient padding for touch targets */
+button,
+.button,
+[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 16px;
+}
+
+/* Ensure form controls have visible labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Ensure form controls have sufficient padding */
+input,
+textarea,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  font-size: var(--font-size-base);
+}
+
+/* Message bubble styles */
+.message-bubble {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.user-message {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  margin-left: auto;
+}
+
+.ai-message {
+  background-color: #f5f5f5;
+  color: #212121;
+  margin-right: auto;
+}
+
+/* Ensure sufficient contrast for message timestamps */
+.message-time {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .user-message {
+    background-color: #0d47a1;
+    color: #e3f2fd;
+  }
+  
+  .ai-message {
+    background-color: #424242;
+    color: #f5f5f5;
+  }
+  
+  .message-time {
+    color: #aaa;
+  }
+}
+
+/* Ensure error messages are clearly visible */
+.message-error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border-left: 4px solid #c62828;
+}
+
+@media (prefers-color-scheme: dark) {
+  .message-error {
+    background-color: #4a0f0f;
+    color: #ffcdd2;
+    border-left: 4px solid #ef5350;
+  }
+}
+
+/* Loading indicator with animation that respects reduced motion preferences */
+.loading-indicator {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading-indicator {
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* Input area styles */
+.input-area-container {
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  background-color: var(--color-background-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .input-area-container {
+    border-top: 1px solid #444;
+    background-color: var(--color-background-dark);
+  }
+}
+
+/* Attached files list */
+.attached-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.attached-file {
+  display: flex;
+  align-items: center;
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .attached-file {
+    background-color: #0d47a1;
+    color: #e3f2fd;
+  }
+}
+
+.remove-file-button {
+  background: none;
+  border: none;
+  color: inherit;
+  margin-left: 0.5rem;
+  padding: 2px;
+  min-height: auto;
+  min-width: auto;
+}
+
+.remove-file-button:hover,
+.remove-file-button:focus {
+  color: var(--color-danger);
+}
+
+/* Input form */
+.input-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.textarea-container {
+  flex-grow: 1;
+}
+
+textarea#message-input {
+  resize: vertical;
+  min-height: 44px;
+  max-height: 200px;
+  padding: 12px;
+}
+
+.input-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.action-button {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: var(--color-secondary);
+}
+
+.action-button:hover,
+.action-button:focus {
+  background-color: #e9ecef;
+  color: var(--color-primary);
+}
+
+.action-button.has-files {
+  color: var(--color-primary);
+}
+
+.action-button.recording {
+  background-color: #ffebee;
+  color: var(--color-danger);
+  animation: pulse 1.5s infinite;
+}
+
+.send-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.send-button:hover,
+.send-button:focus {
+  background-color: #004494;
+}
+
+.send-button:disabled {
+  background-color: var(--color-secondary);
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  .action-button {
+    background-color: #333;
+    border-color: #555;
+    color: #ccc;
+  }
+  
+  .action-button:hover,
+  .action-button:focus {
+    background-color: #444;
+    color: var(--color-primary-light);
+  }
+  
+  .action-button.recording {
+    background-color: #4a0f0f;
+    color: #ffcdd2;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .message-bubble {
+    max-width: 90%;
+  }
+  
+  .input-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .message-bubble {
+    border: 1px solid CanvasText;
+  }
+  
+  .user-message,
+  .ai-message {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+  
+  .action-button,
+  .send-button {
+    border: 1px solid CanvasText;
+  }
+  
+  .action-button.recording {
+    border: 2px solid CanvasText;
+  }
+}
+
+/* Text spacing for better readability */
+.message-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Keyboard shortcuts help */
+.keyboard-shortcuts {
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.help-button {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  min-height: auto;
+  padding: 4px 8px;
+}
+
+.help-button:hover,
+.help-button:focus {
+  color: var(--color-primary);
+}
+
+/* Ensure code blocks are accessible */
+pre, code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  overflow-x: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre, code {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+  }
+}
