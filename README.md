@@ -46,6 +46,14 @@ npm run build
 npm run preview
 ```
 
+## Deployment
+
+The application is configured for easy deployment on Netlify. See the [Deployment Guide](DEPLOYMENT.md) for detailed instructions.
+
+## Contributing
+
+Contributions are welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting a pull request.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
