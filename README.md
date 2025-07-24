@@ -46,6 +46,24 @@ npm run build
 npm run preview
 ```
 
+### Project Structure
+
+```
+chatguy/
+├── public/            # Static assets
+├── src/               # Source files
+│   ├── assets/        # Images, fonts, etc.
+│   ├── components/    # Reusable components
+│   ├── App.jsx        # Main application component
+│   ├── App.css        # Application styles
+│   ├── main.jsx       # Entry point
+│   └── index.css      # Global styles
+├── examples/          # Accessibility examples
+├── package.json       # Project dependencies and scripts
+├── vite.config.js     # Vite configuration
+└── netlify.toml       # Netlify deployment configuration
+```
+
 ## Deployment
 
 The application is configured for easy deployment on Netlify. See the [Deployment Guide](DEPLOYMENT.md) for detailed instructions.
